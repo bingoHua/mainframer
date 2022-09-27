@@ -40,7 +40,7 @@ fn main() {
         Ok(value) => fs::canonicalize(value).unwrap()
     };
 
-    let mut config_file = local_dir_absolute_path.clone();
+    let mut config_file = home::home_dir().clone().unwrap();
     config_file.push(".mainframer/config.yml");
 
     let config = match merge_configs(&config_file) {
