@@ -21,16 +21,19 @@ impl Ignore {
 
         Ignore {
             common_ignore_file: if common_ignore_file.exists() {
+                println!("1");
                 Some(common_ignore_file.to_path_buf())
             } else {
                 None
             },
             local_ignore_file: if local_ignore_file.exists() {
+                println!("2");
                 Some(local_ignore_file.to_path_buf())
             } else {
                 None
             },
             remote_ignore_file: if remote_ignore_file.exists() {
+                println!("2");
                 Some(remote_ignore_file.to_path_buf())
             } else {
                 None

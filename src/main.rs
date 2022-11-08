@@ -40,15 +40,14 @@ fn main() {
         Ok(value) => fs::canonicalize(value).unwrap()
     };
 
-    let mut config_file = home::home_dir().clone().unwrap();
+    let config_file_folder  = home::home_dir().clone().unwrap();
+    let mut config_file = config_file_folder.clone();
     config_file.push(".mainframer/config.yml");
-
     let config = match merge_configs(&config_file) {
         Err(error) => exit_with_error(&error, 1),
         Ok(value) => value,
     };
-
-    let ignore = Ignore::from_working_dir(&local_dir_absolute_path);
+    let ignore = Ignore::from_working_dir(&config_file_folder);
 
     println!("Pushing...");
 
